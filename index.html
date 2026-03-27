@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Executivo - Migração iFood</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        .ifood-red { background-color: #EA1D2C; }
+        .ifood-bg { background-color: #F7F7F7; }
+        
+        .nav-active {
+            border-bottom: 3px solid #EA1D2C;
+            color: #EA1D2C;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #EA1D2C; }
+
+        .faq-card:hover { border-color: #EA1D2C; }
+    </style>
+</head>
+<body class="ifood-bg min-h-screen">
+    <div class="max-w-6xl mx-auto pb-12">
+        
+        <!-- Navegação -->
+        <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 px-4 md:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-8">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 ifood-red rounded-lg flex items-center justify-center text-white font-black text-xl italic">i</div>
+                        <span class="font-extrabold text-slate-900 tracking-tight">Migração Anota.ai</span>
+                    </div>
+                    <div class="hidden md:flex gap-6 h-16">
+                        <button onclick="showPage('dashboard')" id="nav-dashboard" class="nav-active px-2 flex items-center gap-2 font-bold text-sm transition-all">
+                            <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
+                        </button>
+                        <button onclick="showPage('faq')" id="nav-faq" class="px-2 flex items-center gap-2 font-bold text-sm text-slate-500 hover:text-red-500 transition-all">
+                            <i data-lucide="help-circle" class="w-4 h-4"></i> FAQ Completo
+                        </button>
+                    </div>
+                </div>
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-widest hidden sm:block italic">
+                    Foodlovers Only
+                </div>
+            </div>
+        </nav>
+
+        <!-- PÁGINA 1: DASHBOARD -->
+        <main id="page-dashboard" class="p-4 md:p-8 space-y-6">
+            <!-- Cabeçalho -->
+            <header class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Relatório de Pré-Onboarding</h1>
+                    <div class="flex items-center gap-3 mt-3">
+                        <span class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider italic">Anota Aí</span>
+                        <span class="text-slate-300">/</span>
+                        <span class="flex items-center gap-1 text-slate-500 text-sm font-medium">
+                            <i data-lucide="calendar" class="w-4 h-4 text-red-500"></i> 27 de Março
+                        </span>
+                    </div>
+                </div>
+                <a href="https://liviapaula-ux.github.io/preonboardinganotai/" target="_blank" class="w-full lg:w-auto flex items-center justify-center gap-3 ifood-red hover:bg-red-700 text-white px-8 py-4 rounded-2xl transition-all font-bold shadow-xl shadow-red-100 group">
+                    Ver material que foi apresentado para os times
+                    <i data-lucide="external-link" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                </a>
+            </header>
+
+            <!-- Métricas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-red-50 text-red-600 rounded-2xl"><i data-lucide="users" class="w-6 h-6"></i></div>
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-lg">LIVE</span>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Participantes</p>
+                    <h3 class="text-4xl font-black text-slate-900 mt-1">+300</h3>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-slate-50 text-slate-600 rounded-2xl"><i data-lucide="help-circle" class="w-6 h-6"></i></div>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Perguntas (Slido)</p>
+                    <h3 class="text-4xl font-black text-slate-900 mt-1">77</h3>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-black text-white rounded-2xl"><i data-lucide="calendar-check" class="w-6 h-6"></i></div>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Eleição</p>
+                    <h3 class="text-4xl font-black text-slate-900 mt-1">06/04</h3>
+                </div>
+            </div>
+
+            <!-- Gráfico -->
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                <h2 class="text-xl font-bold text-slate-800 mb-8">Interesse por Categoria</h2>
+                <div class="h-[400px]">
+                    <canvas id="benefitsChart"></canvas>
+                </div>
+            </div>
+        </main>
+
+        <!-- PÁGINA 2: FAQ COMPLETO -->
+        <main id="page-faq" class="hidden p-4 md:p-8 space-y-8">
+            <header class="text-center max-w-2xl mx-auto space-y-4">
+                <h2 class="text-4xl font-black text-slate-900">Perguntas Frequentes</h2>
+                <p class="text-slate-500 font-medium">Tudo o que precisas de saber sobre a migração de benefícios para o iFood.</p>
+                <div class="relative max-w-md mx-auto">
+                    <input type="text" id="faqSearch" placeholder="Pesquisar por tema (ex: saúde, pet)..." class="w-full px-6 py-3 rounded-2xl bg-white border border-slate-200 focus:ring-4 focus:ring-red-100 focus:border-red-500 outline-none transition-all shadow-sm">
+                    <i data-lucide="search" class="absolute right-4 top-3.5 text-slate-400 w-5 h-5"></i>
+                </div>
+            </header>
+
+            <!-- Lista de FAQ Estruturada -->
+            <div id="faqList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- As categorias serão inseridas via JS -->
+            </div>
+        </main>
+
+        <footer class="mt-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.4em]">
+            iFood People Experience • 2026
+        </footer>
+    </div>
+
+    <script>
+        // Ícones
+        lucide.createIcons();
+
+        // Dados do FAQ organizados
+        const faqData = [
+            {
+                category: "1. Pontos e Sistema de Pontuação",
+                items: [
+                    { q: "Tem como aumentar os pontos?", a: "NÃO. A quantidade de pontos é fixa por faixa de grade conforme tabela, é possível caso haja promoção de cargo com mudança de grupo flex." },
+                    { q: "Pode transferir o saldo de uma categoria para outra?", a: "NÃO. Uma vez alocados os pontos em um benefício específico, não é possível transferir. Os pontos extras (não alocados) podem ser distribuídos livremente entre os benefícios flexíveis não obrigatórios durante a eleição." },
+                    { q: "O valor mínimo do VR abate dos pontos que temos?", a: "SIM. O mínimo de R$ 810 em Vale Refeição/Alimentação consome 810 pontos obrigatoriamente de todos os Foodlovers, independente do grade. Este valor já está incluído no cálculo total de pontos que você recebe." },
+                    { q: "Resume quanto de benefícios mínimos já vai descontar obrigatoriamente da pontuação", a: "810 alimentação + 12 odonto + 335 saúde* = 1157 (*se mudar a categoria do saúde, pode ser diferente a pontuação)." }
+                ]
+            },
+            {
+                category: "2. Plano de Saúde",
+                items: [
+                    { q: "Pode incluir mãe como dependente do plano de saúde?", a: "Não pode. Pode apenas conjuge e filhos." },
+                    { q: "Enteado entra no plano de saúde como dependente?", a: "SIM, mediante comprovação de dependência econômica e guarda judicial (se aplicável)." },
+                    { q: "No caso de gestantes, quando o bebê nascer dará para mexer nos pontos e adicionar no plano de saúde?", a: "SIM. Nascimento é um evento elegível que permite alteração fora da eleição regular. Você terá 30 dias após o nascimento para incluir o recém-nascido no plano." },
+                    { q: "O plano de saúde só tem o custo da pontuação ou tem algum custo extra?", a: "Tem copay (coparticipação). Apenas os planos de entrada (Efetivo e Estilo) não têm; os demais têm sim!" },
+                    { q: "Para quem é PCD vai ter coparticipação?", a: "PCDs têm ISENÇÃO de coparticipação em planos de saúde. Independente do plano escolhido, não haverá cobrança de coparticipação." },
+                    { q: "A isenção para PCD no plano de saúde, como ficam os pontos?", a: "A isenção de PCD refere-se à coparticipação (consultas/exames), NÃO aos pontos. Os pontos do plano de saúde são consumidos normalmente conforme a tabela." }
+                ]
+            },
+            {
+                category: "3. Dependentes no Plano de Saúde",
+                items: [
+                    { q: "Se eu adicionar um dependente, vai descontar mensalmente os pontos do dependente?", a: "SIM. Regra: 1º dependente desconta o mesmo valor que o titular. 2º dependente em diante você RECEBE pontos adicionais para compensar." },
+                    { q: "Só dá pra adicionar dependentes se tiver pontos sobrando?", a: "NÃO necessariamente. A partir do 2º dependente, você recebe pontos extras ou pode optar pelo complemento da falta de pontos com desconto em folha." },
+                    { q: "Exemplo prático de pontos para dependentes (Grade 11):", a: "Titular: 335 pts | Titular + 1 dep: 670 pts | Titular + 2 dep: 1.005 pts (mas recebe +335 extras) | Titular + 3 dep: 1.340 pts (mas recebe +670 extras)." },
+                    { q: "Se tenho dois dependentes, será descontado a quantidade de pontos para os 2 ou somente 1?", a: "Somente 1." }
+                ]
+            },
+            {
+                category: "4. Plano Odontológico",
+                items: [
+                    { q: "O plano odontológico tem carência?", a: "Não tem carência e tem cobertura em todo o Brasil pela Bradesco." },
+                    { q: "Desconta pontos dos dependentes no odonto?", a: "SIM, cada dependente consome a mesma quantidade do titular (Essencial Plus: 12 pts | Essencial Top: 51 pts | Complete White: 80 pts)." },
+                    { q: "O plano odontológico é obrigatório mesmo que eu não use o odontomóvel?", a: "SIM. O plano Essencial Plus (12 pontos) é OBRIGATÓRIO para todos. Tem cobertura nacional, o odontomóvel de Osasco é apenas uma facilidade adicional." }
+                ]
+            },
+            {
+                category: "5. Seguro de Vida",
+                items: [
+                    { q: "Como funciona o Seguro de Vida?", a: "Todos têm o Seguro 25x OBRIGATÓRIO e SEM CUSTO (0 pontos). Upgrades para 30x ou 36x têm custo em pontos." }
+                ]
+            },
+            {
+                category: "6. Vale Refeição/Alimentação",
+                items: [
+                    { q: "Pode transferir pontos do VR pro VA e vice-versa?", a: "Sim, entre VA e VR você pode transferir sempre que quiser." },
+                    { q: "O valor mínimo de R$ 810 já consome os pontos automaticamente?", a: "SIM, consome 810 pontos obrigatoriamente. Se quiser aumentar, cada ponto extra equivale a R$ 1." }
+                ]
+            },
+            {
+                category: "7. Benefícios Flexíveis Não Obrigatórios",
+                items: [
+                    { q: "Pode me explicar melhor como funciona?", a: "Você recebe pontos totais (por grade). Os obrigatórios vão para Saúde+Odonto+Refeição. Os extras você distribui entre Pet, Cultura, Mobilidade, Idiomas, Farmácia e Reembolso Flex." },
+                    { q: "Plano pet consome pontos?", a: "SIM. O valor em pontos alocado é o valor que o iFood paga mensalmente pelo plano." },
+                    { q: "Até quanto posso colocar no Cultura?", a: "O benefício Cultura é FIXO em R$ 50 (50 pontos). Ou você escolhe os R$ 50 ou não escolhe." },
+                    { q: "Em quais categorias posso usar o Reembolso Flex?", a: "Despesas médicas/odonto não cobertas, medicamentos, ótica, vacinas, aparelhos ortopédicos, massagem terapêutica, graduação e pós." }
+                ]
+            },
+            {
+                category: "8. Complemento de Idiomas",
+                items: [
+                    { q: "Posso usar para cursos já ativos?", a: "SIM, vale para cursos ativos. Você aloca pontos (se quiser complementar) e solicita reembolso. Os 3.600/ano base não consomem pontos." },
+                    { q: "Reembolsa dependente no idioma?", a: "Apenas titular." },
+                    { q: "Notas de Preply e Cambly funcionam?", a: "SIM, desde que sejam notas fiscais válidas de ensino de idiomas." }
+                ]
+            },
+            {
+                category: "9. Outros (Academia, Medicamentos, Vittude)",
+                items: [
+                    { q: "Continua com Wellhub e Gympass?", a: "Sim! Precisará de um novo cadastro com o e-mail @ifood.com.br em breve." },
+                    { q: "Vittude consome pontos?", a: "Não." },
+                    { q: "Quais as farmácias parceiras?", a: "Pode consultar no app da Vidalink. O desconto vale para uma listagem específica de medicamentos elegíveis." }
+                ]
+            },
+            {
+                category: "10. Auxílios (Creche, Home Office, PCD)",
+                items: [
+                    { q: "Precisa enviar recibo do auxílio creche?", a: "Não, o valor é integral e o mesmo que já era pago antes." },
+                    { q: "Teremos auxílio home office?", a: "Sim, para alguns modelos de contrato. Não desconta pontos." },
+                    { q: "Ainda existe auxílio para filho PCD?", a: "Sim, sem mudanças." }
+                ]
+            },
+            {
+                category: "11. Eleição e Processo",
+                items: [
+                    { q: "Posso mudar os benefícios todo mês?", a: "Não, somente em períodos específicos de eleição." },
+                    { q: "E se eu estiver de férias na eleição de junho?", a: "Se não fizer nada, as suas escolhas anteriores são mantidas. Para a eleição de abril, falaremos com os ausentes para combinar o prazo." }
+                ]
+            },
+            {
+                category: "13. Onboarding e Kit",
+                items: [
+                    { q: "Vamos receber kit de boas-vindas?", a: "Não haverá kit de onboarding (mochilas, camisetas)." }
+                ]
+            }
+        ];
+
+        // Função para mostrar página
+        function showPage(page) {
+            document.getElementById('page-dashboard').classList.add('hidden');
+            document.getElementById('page-faq').classList.add('hidden');
+            document.getElementById('nav-dashboard').classList.remove('nav-active');
+            document.getElementById('nav-faq').classList.remove('nav-active');
+            document.getElementById('nav-dashboard').classList.add('text-slate-500');
+            document.getElementById('nav-faq').classList.add('text-slate-500');
+
+            document.getElementById('page-' + page).classList.remove('hidden');
+            document.getElementById('nav-' + page).classList.add('nav-active');
+            document.getElementById('nav-' + page).classList.remove('text-slate-500');
+            lucide.createIcons();
+        }
+
+        // Renderizar FAQ
+        const faqList = document.getElementById('faqList');
+        function renderFAQ(filter = "") {
+            faqList.innerHTML = "";
+            faqData.forEach(cat => {
+                const filteredItems = cat.items.filter(i => 
+                    i.q.toLowerCase().includes(filter.toLowerCase()) || 
+                    i.a.toLowerCase().includes(filter.toLowerCase()) ||
+                    cat.category.toLowerCase().includes(filter.toLowerCase())
+                );
+
+                if (filteredItems.length > 0) {
+                    const section = document.createElement('div');
+                    section.className = "bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 space-y-4";
+                    section.innerHTML = `
+                        <h3 class="text-sm font-black text-red-600 uppercase tracking-widest border-b border-red-50 pb-4 mb-4">${cat.category}</h3>
+                        <div class="space-y-6">
+                            ${filteredItems.map(item => `
+                                <div class="group">
+                                    <p class="font-bold text-slate-900 mb-2 flex gap-2">
+                                        <span class="text-red-500 italic">P:</span> ${item.q}
+                                    </p>
+                                    <p class="text-slate-500 text-sm leading-relaxed pl-6 border-l-2 border-slate-100 group-hover:border-red-200 transition-colors">
+                                        ${item.a}
+                                    </p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    faqList.appendChild(section);
+                }
+            });
+        }
+
+        document.getElementById('faqSearch').addEventListener('input', (e) => renderFAQ(e.target.value));
+        renderFAQ();
+
+        // Gráfico
+        const ctx = document.getElementById('benefitsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Benefícios Flex', 'Vale Alimentação', 'Plano Saúde', 'Idiomas', 'Odonto', 'Cultura', 'PCD', 'Férias', 'Bem-estar', 'Contrato'],
+                datasets: [{
+                    data: [29, 27, 19, 9, 6, 6, 5, 4, 4, 4],
+                    backgroundColor: ['#EA1D2C', '#EA1D2C', '#EA1D2C', '#64748b', '#64748b', '#64748b', '#64748b', '#64748b', '#64748b', '#64748b'],
+                    borderRadius: 12,
+                    barThickness: 24
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { display: false },
+                    y: { 
+                        grid: { display: false }, 
+                        border: { display: false },
+                        ticks: { color: '#64748b', font: { weight: 'bold', size: 12 } }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
